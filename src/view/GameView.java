@@ -94,8 +94,8 @@ public class GameView extends Applet implements Runnable {
             }
         });
         try {
-            background = ImageIO.read(new File("res/Layer1.png"));
-            level = ImageIO.read(new File("res/Layer2.png"));
+            background = ImageIO.read(new File("res/newLayer1.png"));
+            level = ImageIO.read(new File("res/Layer2newnew.png"));
         } catch (Exception e) {e.getStackTrace();}
 
     }
@@ -116,6 +116,7 @@ public class GameView extends Applet implements Runnable {
             token.addToken(graphics, row, column, gameLogic.getCurrentPlayer());
 
             if (!token.isTokenInMotion()) {
+                gameLogic.nextPlayer();
                 addingToken = false;
             }
             gameLogic.checkForWin();
@@ -125,8 +126,8 @@ public class GameView extends Applet implements Runnable {
         }
 
         token.drawTokens(graphics);
-
         graphics.drawImage(level, -140, 0, level.getWidth(), level.getHeight(), null);
+
 
         graphics = getGraphics();
         graphics.drawImage(screen, 0, 0, 950, 705, 0, 0, 950, 705, null);

@@ -11,7 +11,7 @@ public class Token {
     private Image token;
     private int rowPixels = 90;
     private int columnPixels = 105;
-    private int fallSpeed = 5;
+    private int fallSpeed = 10;
     private boolean tokenInMotion;
 
 

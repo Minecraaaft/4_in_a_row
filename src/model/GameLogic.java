@@ -5,7 +5,7 @@ import java.awt.*;
 public class GameLogic {
     private String[][] board = new String[6][7];
     private String[] players = {"red", "blue"};
-    private int index;
+    private int index = 1;
     private String winner;
 
     public GameLogic() {
@@ -23,7 +23,7 @@ public class GameLogic {
                 board[i -1][column] = players[index];
                 row = i - 1;
                 checkForWin();
-                index = (index + 1) % players.length;
+//                index = (index + 1) % players.length;
 
                 break;
             }
@@ -73,6 +73,10 @@ public class GameLogic {
             }
         }
 
+    }
+
+    public void nextPlayer() {
+        index = (index + 1) % players.length;
     }
 
     public String getCurrentPlayer() {
