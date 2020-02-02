@@ -81,7 +81,6 @@ public class Token {
 
         } else if (xLocation > 726 && xLocation < 830) {
             column = 6;
-
         }
 
         if (player.equals("red")) {

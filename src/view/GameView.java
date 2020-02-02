@@ -3,13 +3,9 @@ package view;
 import model.GameLogic;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.applet.Applet;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -23,17 +19,7 @@ public class GameView extends Applet implements Runnable {
 
 
     public GameView() {
-        addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-
-            }
-
+        addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 switch (e.getKeyCode()) {
@@ -95,7 +81,48 @@ public class GameView extends Applet implements Runnable {
                         break;
                 }
             }
+
         });
+
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (!token.isTokenInMotion()) {
+                    if (e.getX() > 90 && e.getX() < 200) {
+                        column = 0;
+                        row = gameLogic.addToken(column);
+                        addingToken = true;
+                    } else if (e.getX() > 201 && e.getX() < 305) {
+                        column = 1;
+                        row = gameLogic.addToken(column);
+                        addingToken = true;
+                    } else if (e.getX() > 306 && e.getX() < 410) {
+                        column = 2;
+                        row = gameLogic.addToken(column);
+                        addingToken = true;
+                    } else if (e.getX() > 411 && e.getX() < 515) {
+                        column = 3;
+                        row = gameLogic.addToken(column);
+                        addingToken = true;
+                    } else if (e.getX() > 516 && e.getX() < 620) {
+                        column = 4;
+                        row = gameLogic.addToken(column);
+                        addingToken = true;
+                    } else if (e.getX() > 621 && e.getX() < 725) {
+                        column = 5;
+                        row = gameLogic.addToken(column);
+                        addingToken = true;
+
+                    } else if (e.getX() > 726 && e.getX() < 830) {
+                        column = 6;
+                        row = gameLogic.addToken(column);
+                        addingToken = true;
+                    }
+
+                }
+            }
+        });
+
         try {
             background = ImageIO.read(new File("res/newLayer1.png"));
             level = ImageIO.read(new File("res/Layer2newnew.png"));
