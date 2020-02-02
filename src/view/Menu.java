@@ -10,10 +10,8 @@ public class Menu extends JPanel {
     public Menu() {
         add(button);
         add(label);
-        setPreferredSize(new Dimension(950, 45));
+
     }
-
-
 
 
 

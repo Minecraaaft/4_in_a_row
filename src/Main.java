@@ -1,6 +1,6 @@
 import view.GameView;
 import view.Menu;
-import view.MyFrame;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,33 +8,23 @@ import java.awt.*;
 public class Main {
 
     public static void main(String[] args) {
-        GameView b = new GameView();
-
-        MyFrame jFrame = new MyFrame();
-        jFrame.setTitle("4 in a row");
+        JFrame jFrame = new JFrame();
+        jFrame.setTitle("Connect 4");
         jFrame.setVisible(true);
 
-        JPanel jPanel = new JPanel();
+        GameView b = new GameView();
+        JPanel menu = new Menu();
 
 
-        JButton button = new JButton("Play  again");
-        JLabel label = new JLabel("Press here to play again");
-//
-//        button.setBounds(400, 0, 20,20);
-//
-        jPanel.add(label);
-        jPanel.add(button);
+        menu.setPreferredSize(new Dimension(950, 45));
         b.setPreferredSize(new Dimension(950, 705));
 
-
-
-
-        jFrame.add(new Menu());
+        jFrame.add(menu);
         jFrame.add(b);
-
+        b.start();
         jFrame.setLayout(new FlowLayout(FlowLayout.CENTER));
         jFrame.setSize(950,750);
-        b.start();
+
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }

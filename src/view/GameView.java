@@ -3,10 +3,13 @@ package view;
 import model.GameLogic;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -98,6 +101,7 @@ public class GameView extends Applet implements Runnable {
             level = ImageIO.read(new File("res/Layer2newnew.png"));
         } catch (Exception e) {e.getStackTrace();}
 
+
     }
 
     @Override
@@ -111,7 +115,8 @@ public class GameView extends Applet implements Runnable {
     public void render() {
         Graphics graphics = screen.getGraphics();
         graphics.drawImage(background, 0, 0, background.getWidth(), background.getHeight(), null);
-
+        double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
+//        System.out.println(mouseX);
         if (addingToken) {
             token.addToken(graphics, row, column, gameLogic.getCurrentPlayer());
 
@@ -123,6 +128,8 @@ public class GameView extends Applet implements Runnable {
             if (gameLogic.getWinner() != null) {
                 System.out.println(gameLogic.getWinner() + " has won");
             }
+        } else {
+            token.tokenHover(graphics, (int) mouseX, gameLogic.getCurrentPlayer());
         }
 
         token.drawTokens(graphics);

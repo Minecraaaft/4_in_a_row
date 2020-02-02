@@ -63,6 +63,34 @@ public class Token {
             tokenInMotion = false;
         }
     }
+    public void tokenHover(Graphics graphics, int xLocation, String player) {
+        int column = 13371337;
+        if (xLocation > 90 && xLocation < 200) {
+            column = 0;
+        } else if (xLocation > 201 && xLocation < 305) {
+            column = 1;
+        } else if (xLocation > 306 && xLocation < 410) {
+            column = 2;
+        } else if (xLocation > 411 && xLocation < 515) {
+            column = 3;
+        } else if (xLocation > 516 && xLocation < 620) {
+            column = 4;
+
+        } else if (xLocation > 621 && xLocation < 725) {
+            column = 5;
+
+        } else if (xLocation > 726 && xLocation < 830) {
+            column = 6;
+
+        }
+
+        if (player.equals("red")) {
+            graphics.drawImage(token, 105 + column * columnPixels, 20, 225 + column * columnPixels, 140, 0, 0, 100, 100, null);
+
+        } else {
+            graphics.drawImage(token, 100 + column * columnPixels, 20, 220 + column * columnPixels, 140, 100, 0, 200, 100, null);
+        }
+    }
 
     public boolean isTokenInMotion() {
         return tokenInMotion;
