@@ -144,7 +144,7 @@ public class GameView extends Applet implements Runnable {
         graphics.drawImage(background, 0, 0, background.getWidth(), background.getHeight(), null);
         double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
 //        System.out.println(mouseX);
-        if (addingToken) {
+        if (addingToken && row != -1) {
             token.addToken(graphics, row, column, gameLogic.getCurrentPlayer());
 
             if (!token.isTokenInMotion()) {

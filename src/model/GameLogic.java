@@ -17,14 +17,12 @@ public class GameLogic {
     }
 
     public int addToken(int column) {
-        int row = 69;
+        int row = -1;
         for (int i = board.length; i != 0; i--) {
             if (board[i -1][column].equals("")) {
                 board[i -1][column] = players[index];
                 row = i - 1;
                 checkForWin();
-//                index = (index + 1) % players.length;
-
                 break;
             }
         }
