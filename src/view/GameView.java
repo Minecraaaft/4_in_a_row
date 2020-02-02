@@ -113,10 +113,14 @@ public class GameView extends Applet implements Runnable {
         graphics.drawImage(background, 0, 0, background.getWidth(), background.getHeight(), null);
 
         if (addingToken) {
-            token.addToken(graphics, row, column);
+            token.addToken(graphics, row, column, gameLogic.getCurrentPlayer());
 
             if (!token.isTokenInMotion()) {
                 addingToken = false;
+            }
+            gameLogic.checkForWin();
+            if (gameLogic.getWinner() != null) {
+                System.out.println(gameLogic.getWinner() + " has won");
             }
         }
 
@@ -139,7 +143,7 @@ public class GameView extends Applet implements Runnable {
         while (true) {
             render();
             try {
-                Thread.sleep(25);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.getStackTrace();
             }
